@@ -428,7 +428,7 @@
     <created_user>-</created_user>
     <created_date>2020/05/13 13:32:02.331</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2020/05/14 11:06:37.581</modified_date>
+    <modified_date>2020/05/14 16:55:51.483</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -484,7 +484,8 @@
     <connection>WVC</connection>
     <sql>SELECT
   invoiceno
-, date(invoicedate) as invoicedate
+, TO_TIMESTAMP(invoicedate, 'MM/DD/YYYY HH24:MI') as invoicedate
+, date(invoicedate) as date
 , customerid
 , country
 , stockcode
@@ -528,10 +529,33 @@ FROM staging.dataset
         <type>Date</type>
         <storagetype>normal</storagetype>
         <name>invoicedate</name>
-        <length>-1</length>
+        <length>6</length>
         <precision>-1</precision>
         <origin>Dataset Input</origin>
         <comments>invoicedate</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/New_York</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>Date</type>
+        <storagetype>normal</storagetype>
+        <name>date</name>
+        <length>-1</length>
+        <precision>-1</precision>
+        <origin>Dataset Input</origin>
+        <comments>date</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol>,</grouping_symbol>
@@ -796,7 +820,7 @@ FROM staging.dataset
     </formula>
     <formula>
       <field_name>dateid</field_name>
-      <formula_string>Year([invoicedate])*10000 + Month([invoicedate]) *100 + day([invoicedate])</formula_string>
+      <formula_string>Year([date])*10000 + Month([date]) *100 + day([date])</formula_string>
       <value_type>Number</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
@@ -931,10 +955,10 @@ FROM staging.dataset
       <meta>
         <name>invoicedate</name>
         <rename>invoicedate</rename>
-        <type>None</type>
+        <type>Timestamp</type>
         <length>-2</length>
         <precision>-2</precision>
-        <conversion_mask/>
+        <conversion_mask>YYYY-MM-DD hh:mm</conversion_mask>
         <date_format_lenient>false</date_format_lenient>
         <date_format_locale/>
         <date_format_timezone/>
