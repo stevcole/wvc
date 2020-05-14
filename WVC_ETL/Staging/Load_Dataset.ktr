@@ -428,7 +428,7 @@
     <created_user>-</created_user>
     <created_date>2020/05/05 17:30:01.472</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2020/05/13 14:10:54.317</modified_date>
+    <modified_date>2020/05/14 08:25:02.294</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -568,7 +568,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <filename>C:\Users\vince\Assign It To Us\Assign It To Us Team Site - Documents\Resources\Interviews\World Vision\Source Data\Dataset.csv</filename>
+    <filename>C:\Users\vince\OneDrive\Documents\GitHub\wvc\Source Data\Dataset.csv</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>
@@ -731,6 +731,76 @@
     </GUI>
   </step>
   <step>
+    <name>Get system info</name>
+    <type>SystemInfo</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>Created_TS</name>
+        <type>system date (fixed)</type>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>336</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get variables</name>
+    <type>GetVariable</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>Created_By</name>
+        <variable>${user.name}</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>448</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Rejected_Records Output</name>
     <type>TableOutput</type>
     <description/>
@@ -788,43 +858,33 @@
     <fields>
       <field>
         <name>InvoiceNo</name>
-        <rename/>
       </field>
       <field>
         <name>InvoiceDate</name>
-        <rename/>
       </field>
       <field>
         <name>CustomerID</name>
-        <rename/>
       </field>
       <field>
         <name>Country</name>
-        <rename/>
       </field>
       <field>
         <name>StockCode</name>
-        <rename/>
       </field>
       <field>
         <name>Description</name>
-        <rename/>
       </field>
       <field>
         <name>Quantity</name>
-        <rename/>
       </field>
       <field>
         <name>UnitPrice</name>
-        <rename/>
       </field>
       <field>
         <name>Created_TS</name>
-        <rename/>
       </field>
       <field>
         <name>Created_By</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
@@ -1008,76 +1068,6 @@
     </remotesteps>
     <GUI>
       <xloc>560</xloc>
-      <yloc>112</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Get variables</name>
-    <type>GetVariable</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>Created_By</name>
-        <variable>${user.name}</variable>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>448</xloc>
-      <yloc>112</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Get system info</name>
-    <type>SystemInfo</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>Created_TS</name>
-        <type>system date (fixed)</type>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>336</xloc>
       <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>

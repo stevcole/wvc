@@ -1,12 +1,12 @@
 <transformation>
   <info>
-    <name>D_Date</name>
+    <name>Date Dimension Generator</name>
     <description/>
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
     <trans_status>0</trans_status>
-    <directory>/ODS/Dims</directory>
+    <directory>/</directory>
     <parameters>
     </parameters>
     <log>
@@ -429,7 +429,7 @@
     <created_user/>
     <created_date>2018/08/20 16:33:15.935</created_date>
     <modified_user>admin</modified_user>
-    <modified_date>2020/05/13 12:51:15.368</modified_date>
+    <modified_date>2020/05/14 11:16:32.447</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -438,8 +438,8 @@
       <note>Edit the Date Value and number of rows 
 to generate in the Generate from Start Date 
 Transformation</note>
-      <xloc>148</xloc>
-      <yloc>9</yloc>
+      <xloc>32</xloc>
+      <yloc>16</yloc>
       <width>271</width>
       <heigth>58</heigth>
       <fontname/>
@@ -548,6 +548,11 @@ Transformation</note>
     </hop>
     <hop>
       <from>CalculatedFields</from>
+      <to>Select values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values</from>
       <to>D_Date</to>
       <enabled>Y</enabled>
     </hop>
@@ -693,8 +698,8 @@ datedif(date(year([FirstDate])+1;1;1);[DimensionDate];"m")+1)</formula_string>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>623</xloc>
-      <yloc>93</yloc>
+      <xloc>496</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -805,8 +810,8 @@ datedif(date(year([FirstDate])+1;1;1);[DimensionDate];"m")+1)</formula_string>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>752</xloc>
-      <yloc>96</yloc>
+      <xloc>784</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -840,8 +845,8 @@ datedif(date(year([FirstDate])+1;1;1);[DimensionDate];"m")+1)</formula_string>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>375</xloc>
-      <yloc>91</yloc>
+      <xloc>256</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -884,8 +889,8 @@ datedif(date(year([FirstDate])+1;1;1);[DimensionDate];"m")+1)</formula_string>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>242</xloc>
-      <yloc>91</yloc>
+      <xloc>128</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -917,8 +922,393 @@ datedif(date(year([FirstDate])+1;1;1);[DimensionDate];"m")+1)</formula_string>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>495</xloc>
-      <yloc>92</yloc>
+      <xloc>368</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>FirstDate</name>
+        <rename/>
+      </field>
+      <field>
+        <name>DayInDimension</name>
+        <rename/>
+      </field>
+      <field>
+        <name>DimensionDate</name>
+        <rename/>
+      </field>
+      <field>
+        <name>DateSid</name>
+        <rename/>
+      </field>
+      <field>
+        <name>Year</name>
+        <rename/>
+      </field>
+      <field>
+        <name>Quarter</name>
+        <rename/>
+      </field>
+      <field>
+        <name>Month</name>
+        <rename/>
+      </field>
+      <field>
+        <name>Day</name>
+        <rename/>
+      </field>
+      <field>
+        <name>Weekday</name>
+        <rename/>
+      </field>
+      <field>
+        <name>MonthName</name>
+        <rename/>
+      </field>
+      <field>
+        <name>MonthAbbreviation</name>
+        <rename/>
+      </field>
+      <field>
+        <name>DayName</name>
+        <rename/>
+      </field>
+      <field>
+        <name>DayAbbreviation</name>
+        <rename/>
+      </field>
+      <field>
+        <name>YearInDimension</name>
+        <rename/>
+      </field>
+      <field>
+        <name>QuartersInDimension</name>
+        <rename/>
+      </field>
+      <field>
+        <name>MonthInDimension</name>
+        <rename/>
+      </field>
+      <field>
+        <name>DayInYear</name>
+        <rename/>
+      </field>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>FirstDate</name>
+        <rename>FirstDate</rename>
+        <type>None</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>DayInDimension</name>
+        <rename>DayInDimension</rename>
+        <type>None</type>
+        <length>-2</length>
+        <precision>0</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>DimensionDate</name>
+        <rename>DimensionDate</rename>
+        <type>None</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>DateSid</name>
+        <rename>DateSid</rename>
+        <type>None</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>Year</name>
+        <rename>Year</rename>
+        <type>None</type>
+        <length>4</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>Quarter</name>
+        <rename>Quarter</rename>
+        <type>None</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>Month</name>
+        <rename>Month</rename>
+        <type>None</type>
+        <length>2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>Day</name>
+        <rename>Day</rename>
+        <type>None</type>
+        <length>2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>Weekday</name>
+        <rename>Weekday</rename>
+        <type>None</type>
+        <length>1</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>MonthName</name>
+        <rename>MonthName</rename>
+        <type>None</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>MonthAbbreviation</name>
+        <rename>MonthAbbreviation</rename>
+        <type>None</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>DayName</name>
+        <rename>DayName</rename>
+        <type>None</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>DayAbbreviation</name>
+        <rename>DayAbbreviation</rename>
+        <type>None</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>YearInDimension</name>
+        <rename>YearInDimension</rename>
+        <type>None</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>QuartersInDimension</name>
+        <rename>QuartersInDimension</rename>
+        <type>None</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>MonthInDimension</name>
+        <rename>MonthInDimension</rename>
+        <type>None</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>DayInYear</name>
+        <rename>DayInYear</rename>
+        <type>None</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>640</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

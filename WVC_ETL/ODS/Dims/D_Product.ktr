@@ -428,8 +428,8 @@
     <created_user>-</created_user>
     <created_date>2020/05/13 10:09:55.704</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2020/05/13 12:51:11.592</modified_date>
-    <key_for_session_key/>
+    <modified_date>2020/05/14 11:03:45.954</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -487,11 +487,6 @@
   </connection>
   <order>
     <hop>
-      <from>Dataset Staging Input</from>
-      <to>Formula</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Formula</from>
       <to>Select values</to>
       <enabled>Y</enabled>
@@ -501,7 +496,71 @@
       <to>D_Product Output</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>Unique rows</from>
+      <to>Formula</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dataset Staging Input</from>
+      <to>Sort rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort rows</from>
+      <to>Unique rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Unique rows</from>
+      <to>Stockcode Duplicates Output</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
+  <step>
+    <name>D_Product Output</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>WVC</connection>
+    <schema>ods</schema>
+    <table>d_product</table>
+    <commit>1000</commit>
+    <truncate>Y</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>N</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
   <step>
     <name>Dataset Staging Input</name>
     <type>TableInput</type>
@@ -513,13 +572,12 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>WVC_Staging</connection>
+    <connection>WVC</connection>
     <sql>SELECT
   distinct stockcode
 , description
 FROM staging.dataset
-order by stockcode
-</sql>
+order by stockcode</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -624,7 +682,7 @@ order by stockcode
       </output>
     </remotesteps>
     <GUI>
-      <xloc>240</xloc>
+      <xloc>496</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
@@ -736,13 +794,90 @@ order by stockcode
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
+      <xloc>608</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>D_Product Output</name>
+    <name>Unique rows</name>
+    <type>Unique</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <count_rows>N</count_rows>
+    <count_field/>
+    <reject_duplicate_row>Y</reject_duplicate_row>
+    <error_description>Duplicate stockcode</error_description>
+    <fields>
+      <field>
+        <name>stockcode</name>
+        <case_insensitive>N</case_insensitive>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>368</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort rows</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>stockcode</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>240</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Stockcode Duplicates Output</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -753,8 +888,8 @@ order by stockcode
       <schema_name/>
     </partitioning>
     <connection>WVC</connection>
-    <schema>ods</schema>
-    <table>d_product</table>
+    <schema>staging</schema>
+    <table>rejected_stockcode_duplicates</table>
     <commit>1000</commit>
     <truncate>Y</truncate>
     <ignore_errors>N</ignore_errors>
@@ -780,12 +915,24 @@ order by stockcode
       </output>
     </remotesteps>
     <GUI>
-      <xloc>496</xloc>
-      <yloc>144</yloc>
+      <xloc>368</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step_error_handling>
+    <error>
+      <source_step>Unique rows</source_step>
+      <target_step>Stockcode Duplicates Output</target_step>
+      <is_enabled>Y</is_enabled>
+      <nr_valuename/>
+      <descriptions_valuename/>
+      <fields_valuename/>
+      <codes_valuename/>
+      <max_errors/>
+      <max_pct_errors/>
+      <min_pct_rows/>
+    </error>
   </step_error_handling>
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
