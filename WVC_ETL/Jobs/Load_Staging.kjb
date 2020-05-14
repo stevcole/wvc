@@ -1,5 +1,5 @@
 <job>
-  <name>Load Staging</name>
+  <name>Load_Staging</name>
   <description/>
   <extended_description/>
   <job_version/>
@@ -7,7 +7,7 @@
   <created_user>-</created_user>
   <created_date>2020/05/14 11:13:32.716</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2020/05/14 11:16:06.213</modified_date>
+  <modified_date>2020/05/14 12:14:11.043</modified_date>
   <parameters>
     </parameters>
   <slaveservers>
@@ -347,49 +347,6 @@
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>Send Mail on Failure</name>
-      <description/>
-      <type>MAIL</type>
-      <attributes/>
-      <server>smtp.gmail.com</server>
-      <port>465</port>
-      <destination>vince@iarusci.com</destination>
-      <destinationCc/>
-      <destinationBCc/>
-      <replyto>vince@iarusci.com</replyto>
-      <replytoname>Vince Iarusci</replytoname>
-      <subject>WVC Dimension Job Load</subject>
-      <include_date>N</include_date>
-      <contact_person/>
-      <contact_phone/>
-      <comment>The Job for the WVC Dimension Load has Failed</comment>
-      <include_files>N</include_files>
-      <zip_files>N</zip_files>
-      <zip_name/>
-      <use_auth>Y</use_auth>
-      <use_secure_auth>Y</use_secure_auth>
-      <auth_user>vince@iarusci.com</auth_user>
-      <auth_password>Encrypted 384a4e66366b6371cce8ee8427f7a882bf358f68db9d8182</auth_password>
-      <only_comment>N</only_comment>
-      <use_HTML>N</use_HTML>
-      <use_Priority>N</use_Priority>
-      <encoding>UTF-8</encoding>
-      <priority>normal</priority>
-      <importance>normal</importance>
-      <sensitivity>normal</sensitivity>
-      <secureconnectiontype>SSL</secureconnectiontype>
-      <replyToAddresses/>
-      <filetypes>      </filetypes>
-      <embeddedimages>
-      </embeddedimages>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>256</xloc>
-      <yloc>240</yloc>
-      <attributes_kjc/>
-    </entry>
-    <entry>
       <name>Success</name>
       <description/>
       <type>SUCCESS</type>
@@ -399,6 +356,49 @@
       <nr>0</nr>
       <xloc>384</xloc>
       <yloc>128</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Send Mail on Failure</name>
+      <description/>
+      <type>MAIL</type>
+      <attributes/>
+      <server>smtp.office365.com</server>
+      <port>587</port>
+      <destination>vince@iarusci.com</destination>
+      <destinationCc/>
+      <destinationBCc/>
+      <replyto>vince.iarusci@assignittous.com</replyto>
+      <replytoname>Vince Iarusci</replytoname>
+      <subject>WVC Dimension Job Load</subject>
+      <include_date>N</include_date>
+      <contact_person/>
+      <contact_phone/>
+      <comment>The Job for the Staging Data Load has Failed</comment>
+      <include_files>N</include_files>
+      <zip_files>N</zip_files>
+      <zip_name/>
+      <use_auth>Y</use_auth>
+      <use_secure_auth>Y</use_secure_auth>
+      <auth_user>vince.iarusci@assignittous.com</auth_user>
+      <auth_password>Encrypted 2be98afc86ade958cf933b4678a80aeeb</auth_password>
+      <only_comment>N</only_comment>
+      <use_HTML>N</use_HTML>
+      <use_Priority>N</use_Priority>
+      <encoding>UTF-8</encoding>
+      <priority>normal</priority>
+      <importance>normal</importance>
+      <sensitivity>normal</sensitivity>
+      <secureconnectiontype>TLS</secureconnectiontype>
+      <replyToAddresses/>
+      <filetypes>      </filetypes>
+      <embeddedimages>
+      </embeddedimages>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>256</xloc>
+      <yloc>240</yloc>
       <attributes_kjc/>
     </entry>
   </entries>
@@ -414,20 +414,20 @@
     </hop>
     <hop>
       <from>Load Dataset</from>
-      <to>Send Mail on Failure</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>N</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Load Dataset</from>
       <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Load Dataset</from>
+      <to>Send Mail on Failure</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
       <unconditional>N</unconditional>
     </hop>
   </hops>
