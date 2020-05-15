@@ -1,12 +1,12 @@
 <transformation>
   <info>
-    <name>Date Dimension Generator</name>
+    <name>D_Date</name>
     <description/>
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
     <trans_status>0</trans_status>
-    <directory>/</directory>
+    <directory>/ODS/Dims</directory>
     <parameters>
     </parameters>
     <log>
@@ -429,7 +429,7 @@
     <created_user/>
     <created_date>2018/08/20 16:33:15.935</created_date>
     <modified_user>admin</modified_user>
-    <modified_date>2020/05/14 11:16:32.447</modified_date>
+    <modified_date>2020/05/14 23:33:10.350</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -895,39 +895,6 @@ datedif(date(year([FirstDate])+1;1;1);[DimensionDate];"m")+1)</formula_string>
     </GUI>
   </step>
   <step>
-    <name>Set Date</name>
-    <type>Formula</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <formula>
-      <field_name>DimensionDate</field_name>
-      <formula_string>date(year([FirstDate]); month([FirstDate]); day([FirstDate]) + [DayInDimension] - 1)</formula_string>
-      <value_type>Date</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field/>
-    </formula>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>368</xloc>
-      <yloc>112</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Select values</name>
     <type>SelectValues</type>
     <description/>
@@ -941,71 +908,54 @@ datedif(date(year([FirstDate])+1;1;1);[DimensionDate];"m")+1)</formula_string>
     <fields>
       <field>
         <name>FirstDate</name>
-        <rename/>
       </field>
       <field>
         <name>DayInDimension</name>
-        <rename/>
       </field>
       <field>
         <name>DimensionDate</name>
-        <rename/>
       </field>
       <field>
         <name>DateSid</name>
-        <rename/>
       </field>
       <field>
         <name>Year</name>
-        <rename/>
       </field>
       <field>
         <name>Quarter</name>
-        <rename/>
       </field>
       <field>
         <name>Month</name>
-        <rename/>
       </field>
       <field>
         <name>Day</name>
-        <rename/>
       </field>
       <field>
         <name>Weekday</name>
-        <rename/>
       </field>
       <field>
         <name>MonthName</name>
-        <rename/>
       </field>
       <field>
         <name>MonthAbbreviation</name>
-        <rename/>
       </field>
       <field>
         <name>DayName</name>
-        <rename/>
       </field>
       <field>
         <name>DayAbbreviation</name>
-        <rename/>
       </field>
       <field>
         <name>YearInDimension</name>
-        <rename/>
       </field>
       <field>
         <name>QuartersInDimension</name>
-        <rename/>
       </field>
       <field>
         <name>MonthInDimension</name>
-        <rename/>
       </field>
       <field>
         <name>DayInYear</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
@@ -1308,6 +1258,39 @@ datedif(date(year([FirstDate])+1;1;1);[DimensionDate];"m")+1)</formula_string>
     </remotesteps>
     <GUI>
       <xloc>640</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set Date</name>
+    <type>Formula</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <formula>
+      <field_name>DimensionDate</field_name>
+      <formula_string>date(year([FirstDate]); month([FirstDate]); day([FirstDate]) + [DayInDimension] - 1)</formula_string>
+      <value_type>Date</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field/>
+    </formula>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>368</xloc>
       <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
