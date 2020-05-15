@@ -31,5 +31,6 @@ Output versions of the reports and dashboard are saved in the Reports folder.  T
 * Purchases by Country
 * Average Transaction Value – Seasonal
 * Cancelled Invoices and Discounts
+* Basket Analysis
 #### Dashboard
 * Sales and Marketing
